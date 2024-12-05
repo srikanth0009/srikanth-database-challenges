@@ -1,19 +1,19 @@
 1. creating tables
 
 CREATE TABLE organization (
-    id INT PRIMARY KEY AUTOINCREMENT,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(50)
 );
 
 CREATE TABLE channel (
-    id INT PRIMARY KEY AUTOINCREMENT,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(50),
     organization_id INT,
     FOREIGN KEY (organization_id) REFERENCES organization(id)
 );
 
 CREATE TABLE user (
-    id INT PRIMARY KEY AUTOINCREMENT,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(50)
 );
 
@@ -26,10 +26,10 @@ CREATE TABLE user_channel (
 );
 
 CREATE TABLE message (
-    id INT PRIMARY KEY AUTOINCREMENT,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT,
     channel_id INT,
-    post_time DATETIME DEFAULT (datetime('now')),
+    post_time DATETIME DEFAULT CURRENT_TIMESTAMP,
     content VARCHAR(50),
     FOREIGN KEY (user_id) REFERENCES user(id),
     FOREIGN KEY (channel_id) REFERENCES channel(id)
